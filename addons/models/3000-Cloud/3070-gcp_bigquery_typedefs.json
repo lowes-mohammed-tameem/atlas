@@ -1,0 +1,187 @@
+{
+  "enumDefs": [],
+  "structDefs": [],
+  "classificationDefs": [],
+  "entityDefs": [
+    {
+      "name":        "gcp_bigquery_parent",
+      "description": "Atlas entity-type representing datasets that can hold other objects in Google Cloud BigQuery",
+      "superTypes":  [
+      ],
+      "serviceType": "gcp",
+      "typeVersion": "1.0",
+      "attributeDefs": [
+      ]
+    },
+    {
+      "name":        "gcp_bigquery_child",
+      "description": "Atlas entity-type representing child types (tables, views, functions... etc) in Google Cloud BigQuery",
+      "superTypes":  [
+      ],
+      "serviceType": "gcp",
+      "typeVersion": "1.0",
+      "attributeDefs": [
+      ]
+    },
+    {
+      "name":        "gcp_bigquery_base",
+      "description": "Atlas Type representing base Type for all Google Cloud BigQuery Data Types",
+      "superTypes":  [
+        "DataSet"
+      ],
+      "serviceType": "gcp",
+      "typeVersion": "1.0",
+      "attributeDefs": [
+        {
+          "name":        "creationTime",
+          "typeName":    "date",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional":  true,
+          "isUnique":    false
+        },
+        {
+          "name":        "selfLink",
+          "typeName":    "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional":  true,
+          "isUnique":    true
+        },
+        {
+          "name":        "lastModifiedTime",
+          "typeName":    "date",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional":  true,
+          "isUnique":    false
+        },
+        {
+          "name":        "storageTier",
+          "typeName":    "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional":  true,
+          "isUnique":    false
+        },
+        {
+          "name":        "encryption",
+          "typeName":    "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional":  true,
+          "isUnique":    false
+        }
+      ]
+    },
+    {
+      "name":        "gcp_bigquery_dataset",
+      "description": "Atlas Type representing a BigQuery Dataset in Google Cloud BigQuery",
+      "superTypes":  [
+        "gcp_storage_parent",
+        "gcp_storage_base"
+      ],
+      "serviceType": "gcp",
+      "typeVersion": "1.0",
+      "attributeDefs": [
+        {
+          "name":        "location",
+          "typeName":    "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional":  true,
+          "isUnique":    false
+        },
+        {
+          "name":        "locationType",
+          "typeName":    "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional":  true,
+          "isUnique":    false
+        },
+        {
+          "name":        "accessControl",
+          "typeName":    "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional":  true,
+          "isUnique":    false
+        },
+        {
+          "name":        "labels",
+          "typeName":    "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional":  true,
+          "isUnique":    false
+        }
+      ]
+    },
+    {
+      "name":        "gcp_bigquery_table",
+      "description": "Atlas Type representing an tables/views in Google Cloud BigQuery",
+      "superTypes":  [
+        "gcp_bigquery_child",
+        "gcp_bigquery_base"
+      ],
+      "serviceType": "gcp",
+      "typeVersion": "1.0",
+      "attributeDefs": [
+        {
+          "name":        "size",
+          "typeName":    "long",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional":  true,
+          "isUnique":    false
+        },
+        {
+          "name":        "rowCount",
+          "typeName":    "long",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional":  true,
+          "isUnique":    false
+        },
+        {
+          "name":        "type",
+          "typeName":    "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional":  true,
+          "isUnique":    false
+        },
+        {
+          "name":        "expirationDate",
+          "typeName":    "date",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional":  true,
+          "isUnique":    false
+        }
+      ]
+    }
+  ],
+  "relationshipDefs": [
+    {
+      "name":                 "gcp_bigquery_parent_children",
+      "serviceType":          "gcp",
+      "typeVersion":          "1.0",
+      "relationshipCategory": "COMPOSITION",
+      "endDef1": {
+        "type":               "gcp_bigquery_parent",
+        "name":               "children",
+        "isContainer":        true,
+        "cardinality":        "SET"
+      },
+      "endDef2": {
+        "type":               "gcp_bigquery_child",
+        "name":               "parent",
+        "isContainer":        false,
+        "cardinality":        "SINGLE"
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}
