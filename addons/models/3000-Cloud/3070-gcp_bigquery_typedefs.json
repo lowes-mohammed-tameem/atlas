@@ -33,6 +33,38 @@
       "typeVersion": "1.0",
       "attributeDefs": [
         {
+          "name":        "kind",
+          "typeName":    "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional":  true,
+          "isUnique":    false
+        },
+        {
+          "name":        "friendlyName",
+          "typeName":    "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional":  true,
+          "isUnique":    false
+        },
+        {
+          "name":        "etag",
+          "typeName":    "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional":  true,
+          "isUnique":    false
+        },
+        {
+          "name":        "id",
+          "typeName":    "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional":  true,
+          "isUnique":    true
+        },
+        {
           "name":        "creationTime",
           "typeName":    "date",
           "cardinality": "SINGLE",
@@ -51,14 +83,6 @@
         {
           "name":        "lastModifiedTime",
           "typeName":    "date",
-          "cardinality": "SINGLE",
-          "isIndexable": true,
-          "isOptional":  true,
-          "isUnique":    false
-        },
-        {
-          "name":        "storageTier",
-          "typeName":    "string",
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional":  true,
@@ -145,7 +169,31 @@
           "isUnique":    false
         },
         {
+          "name":        "tableReference",
+          "typeName":    "map<string,string>",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional":  false,
+          "isUnique":    false
+        },
+        {
+          "name":        "tableReference",
+          "typeName":    "map<string,string>",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional":  false,
+          "isUnique":    false
+        },
+        {
           "name":        "type",
+          "typeName":    "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional":  true,
+          "isUnique":    false
+        },
+        {
+          "name":        "storageTier",
           "typeName":    "string",
           "cardinality": "SINGLE",
           "isIndexable": true,
