@@ -78,8 +78,8 @@
       "name":        "gcp_bigquery_dataset",
       "description": "Atlas Type representing a BigQuery Dataset in Google Cloud BigQuery",
       "superTypes":  [
-        "gcp_storage_parent",
-        "gcp_storage_base"
+        "gcp_bigquery_parent",
+        "gcp_bigquery_base"
       ],
       "serviceType": "gcp",
       "typeVersion": "1.0",
