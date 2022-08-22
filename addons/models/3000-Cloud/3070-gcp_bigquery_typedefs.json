@@ -114,7 +114,7 @@
 			"attributeDefs": [
 				{
 					"name": "accessControl",
-					"typeName": "array<map<string, string>>",
+					"typeName": "array<map<string,string>>",
 					"cardinality": "SINGLE",
 					"isIndexable": false,
 					"isOptional": true,
