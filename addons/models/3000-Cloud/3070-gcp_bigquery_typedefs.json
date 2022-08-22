@@ -296,7 +296,7 @@
 					"isUnique":false
 				},
 				{
-					"name": "parent",
+					"name": "tableId",
 					"typeName": "string",
 					"cardinality": "SINGLE",
 					"isIndexable": false,
