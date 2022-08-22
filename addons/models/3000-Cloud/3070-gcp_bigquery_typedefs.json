@@ -170,13 +170,13 @@
       "typeVersion":          "1.0",
       "relationshipCategory": "COMPOSITION",
       "endDef1": {
-        "type":               "gcp_bigquery_parent",
+        "type":               "gcp_bigquery_dataset",
         "name":               "children",
         "isContainer":        true,
         "cardinality":        "SET"
       },
       "endDef2": {
-        "type":               "gcp_bigquery_child",
+        "type":               "gcp_bigquery_table",
         "name":               "parent",
         "isContainer":        false,
         "cardinality":        "SINGLE"
