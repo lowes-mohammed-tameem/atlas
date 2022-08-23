@@ -278,6 +278,15 @@
 					"isIndexable": false,
 					"isOptional": false,
 					"isUnique":false
+				}
+				,
+				{
+					"name": "name",
+					"typeName": "string",
+					"cardinality": "SINGLE",
+					"isIndexable": false,
+					"isOptional": false,
+					"isUnique":true
 				},
 				{
 					"name": "id",
