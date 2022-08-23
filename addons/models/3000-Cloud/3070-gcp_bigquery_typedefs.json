@@ -313,6 +313,14 @@
 					"isUnique":false
 				},
 				{
+					"name": "qualifiedName",
+					"typeName": "string",
+					"cardinality": "SINGLE",
+					"isIndexable": false,
+					"isOptional": false,
+					"isUnique":false
+				},
+				{
 					"name": "tableId",
 					"typeName": "string",
 					"cardinality": "SINGLE",
