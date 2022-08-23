@@ -294,7 +294,7 @@
 					"cardinality": "SINGLE",
 					"isIndexable": false,
 					"isOptional": false,
-					"isUnique":true
+					"isUnique":false
 				},
 				{
 					"name": "id",
@@ -318,7 +318,7 @@
 					"cardinality": "SINGLE",
 					"isIndexable": false,
 					"isOptional": false,
-					"isUnique":false
+					"isUnique":true
 				},
 				{
 					"name": "tableId",
