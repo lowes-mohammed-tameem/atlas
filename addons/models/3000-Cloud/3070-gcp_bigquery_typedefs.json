@@ -121,6 +121,14 @@
 					"isUnique": false
 				},
 				{
+					"name": "datasetReference",
+					"typeName": "map<string,string>",
+					"cardinality": "SINGLE",
+					"isIndexable": false,
+					"isOptional": true,
+					"isUnique": false
+				},
+				{
 					"name": "labels",
 					"typeName": "string",
 					"cardinality": "SINGLE",
