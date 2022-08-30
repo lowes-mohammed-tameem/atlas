@@ -35,7 +35,7 @@ ENV PATH /usr/java/bin:/usr/local/apache-maven/bin:/usr/local/sbin:/usr/local/bi
 WORKDIR /root
 
 # Pull down Atlas and build it into /root/atlas-bin.
-RUN git clone https://github.com/apache/atlas.git -b master
+RUN git clone https://github.com/lowes-mohammed-tameem/atlas.git -b master
 
 RUN echo 'package-lock=false' >> ./atlas/.npmrc
 
@@ -44,17 +44,23 @@ RUN echo 'package-lock.json' >> ./atlas/.gitignore
 # Memory requirements
 ENV MAVEN_OPTS "-Xms2g -Xmx2g"
 # RUN export MAVEN_OPTS="-Xms2g -Xmx2g"
-
 # Remove -DskipTests if unit tests are to be included
-RUN mvn clean install -DskipTests -Pdist,embedded-hbase-solr -f ./atlas/pom.xml
+RUN mvn clean install -DskipTests -Drat.skip=true -Pdist,embedded-hbase-solr -f ./atlas/pom.xml
 RUN mkdir -p atlas-bin
 RUN tar xzf /root/atlas/distro/target/*bin.tar.gz --strip-components 1 -C /root/atlas-bin
 
 # Set env variables, add it to the path, and start Atlas.
 ENV MANAGE_LOCAL_SOLR true
 ENV MANAGE_LOCAL_HBASE true
-ENV PATH /root/atlas-bin/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH /root/atlas-bin/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/zookeeper/bin/
+
+RUN apt-get update && apt-get install -y wget
+RUN wget "https://dlcdn.apache.org/zookeeper/zookeeper-3.7.1/apache-zookeeper-3.7.1-bin.tar.gz"
+RUN tar xvzf apache-zookeeper-3.7.1-bin.tar.gz && mv apache-zookeeper-3.7.1-bin zookeeper
+RUN cp /root/zookeeper/conf/zoo_sample.cfg /root/zookeeper/conf/zoo.cfg
 
 EXPOSE 21000
+EXPOSE 2181
+EXPOSE 8983
 
-CMD ["/bin/bash", "-c", "/root/atlas-bin/bin/atlas_start.py; tail -fF /root/atlas-bin/logs/application.log"]
+CMD ["/bin/bash", "-c", "zkServer.sh start && /root/atlas-bin/bin/atlas_start.py; tail -fF /root/atlas-bin/logs/application.log"]
